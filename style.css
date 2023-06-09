@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+h1.h1Index{
+    background: #000;
+    background: linear-gradient(137deg, rgba(3,0,172,1) 7%, rgba(226,0,255,1) 58%, rgba(213,183,213,1) 92%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}

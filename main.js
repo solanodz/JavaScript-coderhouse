@@ -1,3 +1,5 @@
+
+alert('Bienvenido!\nHoy es ' + new Date().toLocaleDateString());
 // Crear nombre de usuario y contraseña.
 function autenticarUsuario() {
     let user = prompt('Cree su nombre de usuario:');
@@ -18,8 +20,8 @@ autenticarUsuario();
 
 // Seleccionar la operacion a realizar
 let opcion = '';
-while (opcion !== '6') {
-    opcion = prompt('Ingrese una opcion (escribir solo el numero): \n1- Operaciones basicas \n2- Numeros pares \n3- Numeros impares \n4- Calcular IVA \n5- Peso a dolar \n6- Salir.');
+while (opcion !== '0') {
+    opcion = prompt('Ingrese una opcion (escribir solo el numero): \n1- Operaciones basicas \n2- Numeros pares \n3- Numeros impares \n4- Calcular IVA \n5- Peso a dolar \n6- Tirar el dado \n7- Calculadora de IMC\n8- Calcular la raiz cuadrada de un numero\n0- Salir');
     switch (opcion) {
         // Calculadora basica.
         case '1':
@@ -67,6 +69,7 @@ while (opcion !== '6') {
             console.log('Números pares hasta el número ', limiteSuperior + ':');
             console.log(paresHastaLimite);
             break;
+
         // Devuelve numeros impares hasta un determinado numero y dice la cantidad de numeros impares.
         case '3':
             function numerosImpares(limite) {
@@ -82,6 +85,7 @@ while (opcion !== '6') {
             console.log('Números impares hasta el número ', limiteSuperiorImp + ':');
             console.log(imparesHastaLimite);
             break;
+
         // Calcular el IVA de un producto.
         case '4':
             function calcularIva(precio) {
@@ -91,6 +95,7 @@ while (opcion !== '6') {
             let valorProducto = parseFloat(prompt('Ingresa el valor de tu producto en pesos.'))
             calcularIva(valorProducto);
             break;
+
         // Conversor de moneda. De peso a dolar blue.
         case '5':
             function pesoDolar(cantidad) {
@@ -100,10 +105,47 @@ while (opcion !== '6') {
             let cantidadPesos = parseInt(prompt('Ingresa la cantidad de pesos que quieres convertir a dolar blue.'));
             pesoDolar(cantidadPesos);
             break;
+
+        // Funcion que da un numero aleatorio entre 1 y 6 como un dado.
         case '6':
+            function lanzarDado() {
+                var numeroAleatorio = Math.random() * 5 + 1;
+                var resultado = Math.round(numeroAleatorio);
+                return resultado;
+            }
+            var resultadoLanzamiento = lanzarDado();
+            console.log('El resultado del dado es: ' + resultadoLanzamiento);
             break;
+
+        // CALCULADORA DE IMC
+        case '7':
+            let persona = {
+                nombre: '',
+                peso: 0,
+                altura: 0,
+                calcularIMC: function () {
+                    var imc = this.peso / (this.altura * this.altura);
+                    return imc;
+                }
+            };
+            persona.nombre = prompt('Ingresa tu nombre:');
+            persona.peso = parseFloat(prompt('Ingresa tu peso en kg:'));
+            persona.altura = parseFloat(prompt('Ingresa tu altura en metros:'));
+            let imc = persona.calcularIMC();
+            alert(persona.nombre + ', tu Indice de Masa Corporal es de: ' + imc);
+            break;
+
+        // Calcular la raiz cuadrada de un numero
+        case '8':
+            let numero = parseFloat(prompt('Ingresa el numero al que le quieres sacar la raiz cuadrada: '));
+            let raizCuadrada = Math.sqrt(numero);
+            alert(`La raiz cuadrada de ${numero} es ${raizCuadrada.toFixed(2)}.`)
+            break;
+
+        case '0':
+            break;
+
         default:
-            alert('Ingrese un numero valido.')
-            break;
-    }
+            alert('Ingresa un numero valido.');
+    };
 }
